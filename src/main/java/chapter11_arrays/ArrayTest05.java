@@ -1,4 +1,8 @@
 package chapter11_arrays;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
 /*
     현재까지 배운 대부분의 Java 클래스
 
@@ -31,12 +35,37 @@ package chapter11_arrays;
  */
 public class ArrayTest05 {
     public static void main(String[] args) {
-        double a = Math.random();       // 0.0 초과 1.0 미만의 난수를 생성해서 반환
+//        double a = Math.random();       // 0.0 초과 1.0 미만의 난수를 생성해서 반환
 
-        double [] numbers = {a};
-
-        for (int i = 0 ; i < 9 ; i++) {
-            System.out.println(a);
+        Integer numbers[] = new Integer[10];
+        int sum = 0;
+        int sumEven = 0;
+        System.out.print("10씩 곱한 결과 : [ ");
+//        numbers[0] = (int)(Math.random()*10) + 1;       // 1 부터 10까지의 임의의 정수
+        for (int i = 0 ; i < numbers.length ; i++) {
+            numbers[i] = (int)(Math.random()*10) + 1;
+            // 10 곱한 elements 출력
+            System.out.print((numbers[i]*10) + " ");
+            // 전체 합 구하기(10 곱하기 전
+            sum += numbers[i];
+            // 짝수 합 구하기
+            if (numbers[i] % 2 == 0) {
+                sumEven += numbers[i];
+            }
         }
+        System.out.println("]");
+        System.out.println("numbers 요소의 합 : " + sum);
+        System.out.println("numbers 요소 중 짝수의 합 : " + sumEven);
+
+        // 배열 오름 차순 정렬
+        Arrays.sort(numbers);
+        System.out.println("오름 차순 정렬 : " + Arrays.toString(numbers));
+        // 배열 내림 차순 정렬
+        Arrays.sort(numbers, Comparator.reverseOrder());
+        System.out.println("내림 차순 정렬 : " + Arrays.toString(numbers));
+
+
+
+
     }
 }
