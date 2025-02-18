@@ -31,4 +31,39 @@ package chapter13_abstraction.abstract_class;
 
  */
 public class Main {
+    public static void main(String[] args) {
+        // 추상 클래스는 객체 생성이 불가능하다고 했습니다
+//        Factory factory1 = new Factory("임시 공장") {
+//            @Override
+//            public void produce(String model) {
+//                System.out.println(this.getName() + "에서 [ " + model + " ]을 생산합니다.");
+//            }
+//
+//            @Override
+//            public void manage() {
+//                System.out.println(this.getName() + "에서 야근 중입니다.");
+//            }
+//        };
+//
+//        factory1.produce("백색 가전 냉장고");
+//        factory1.manage();
+        // 근데 이상의 개념은 익명 클래스로 Java 17(11일수도 있습니다...)에 적용되었습니다.
+        // 재사용하지 않고 한 번만 사용하고 치울 예정이라면 사용하기에 좋습니다.
+
+        // 객체 생성
+        PhoneFactory phoneFactory1 = new PhoneFactory("애플 스마트폰 공장");
+        TabletFactory tabletFactory1 = new TabletFactory("애플 태블릿 공장");
+
+        // 슈퍼 클래스의 추상 메서드를 각 서브 클래스들이 구현부를 작성해 호출한 예시
+        phoneFactory1.produce("아이폰17");
+        tabletFactory1.produce("아이패드 프로 13인치 8세대");
+
+        // 슈퍼 클래스의 일반 메서드를 서브 클래스에서 호출한 예시 -> @Override를 하지 않았는데
+        // 사용이 가능하다는 점에 주목해야합니다.
+        phoneFactory1.manage();
+
+
+
+
+    }
 }
